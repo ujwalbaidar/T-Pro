@@ -4,23 +4,14 @@ import { AppService } from './app.service';
 import { TodosModule } from './todos/todos.module';
 import { ConfigModule } from '@nestjs/config';
 
-// import { TypeOrmModule } from '@nestjs/typeorm';
 import { DatabaseModule } from './core/database/database.module';
+import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     TodosModule,
     ConfigModule.forRoot({ isGlobal: true }),
-    // TypeOrmModule.forRoot({
-    //   type: 'postgres',
-    //   host: 'localhost',
-    //   port: 5432,
-    //   username: 'postgres',
-    //   password: 'postgres',
-    //   database: 'todo-db',
-    //   autoLoadEntities: true,
-    //   synchronize: true
-    // }),
     DatabaseModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
